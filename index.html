@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clearpoint Consulting | IBM TRIRIGA · Maximo · AI</title>
+<meta name="description" content="IBM-certified enterprise solutions specialists. TRIRIGA, Maximo, and AI-powered workplace management systems for global organisations.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-elevated: #12121a;
+    --bg-card: #16161f;
+    --bg-hover: #1e1e2a;
+    --orange: #FF6B35;
+    --orange-light: #FF8C5A;
+    --orange-glow: rgba(255,107,53,0.15);
+    --text-primary: #f5f5f7;
+    --text-secondary: #8a8a9a;
+    --text-muted: #5a5a6a;
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(255,107,53,0.2);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 48px rgba(0,0,0,0.5);
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6%;
+    height: 72px;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+
+  .logo-wrap {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--orange), #FF4D00);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+  }
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+  .logo-text span { color: var(--orange); }
+
+  .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+    background: var(--orange); transition: var(--transition);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--orange) !important;
+    color: var(--bg) !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: var(--transition) !important;
+  }
+  .nav-cta:hover { 
+    background: var(--orange-light) !important; 
+    color: var(--bg) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(255,107,53,0.4);
+  }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 6% 80px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 20% 50%, rgba(255,107,53,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255,77,0,0.05) 0%, transparent 40%),
+                var(--bg);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+
+  .hero-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.2);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--orange);
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.6); }
+  }
+
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  .hero-h1 .highlight { 
+    background: linear-gradient(135deg, var(--orange), #FF8C5A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-p {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--orange);
+    color: var(--bg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  .btn-primary:hover::before { transform: translateX(100%); }
+  .btn-primary:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 32px rgba(255,107,53,0.4);
+  }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-decoration: none; cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+  }
+  .btn-ghost:hover { 
+    border-color: var(--orange); 
+    background: rgba(255,107,53,0.08);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--orange); }
+  .stat-label { font-size: 14px; color: var(--text-muted); margin-top: 6px; font-weight: 400; }
+
+  /* Hero Visual - Abstract Tech Illustration */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual-inner {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 520px;
+    position: relative;
+  }
+  .orbit-ring {
+    position: absolute;
+    border: 1px solid rgba(255,107,53,0.15);
+    border-radius: 50%;
+    animation: orbit 20s linear infinite;
+  }
+  .orbit-ring:nth-child(1) { width: 100%; height: 100%; top: 0; left: 0; }
+  .orbit-ring:nth-child(2) { width: 75%; height: 75%; top: 12.5%; left: 12.5%; animation-direction: reverse; animation-duration: 15s; }
+  .orbit-ring:nth-child(3) { width: 50%; height: 50%; top: 25%; left: 25%; animation-duration: 10s; }
+  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .orbit-dot {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255,107,53,0.6);
+  }
+  .orbit-ring:nth-child(1) .orbit-dot { top: -6px; left: 50%; transform: translateX(-50%); }
+  .orbit-ring:nth-child(2) .orbit-dot { bottom: -6px; left: 50%; transform: translateX(-50%); background: var(--orange-light); }
+  .orbit-ring:nth-child(3) .orbit-dot { top: 50%; right: -6px; transform: translateY(-50%); background: #FF4D00; }
+
+  .center-hub {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; height: 140px;
+    background: linear-gradient(135deg, var(--orange), #FF4D00);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    box-shadow: 0 0 60px rgba(255,107,53,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    z-index: 10;
+  }
+  .center-hub::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 32px;
+    background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+
+  .floating-card {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+    animation: float 6s ease-in-out infinite;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .floating-card:nth-child(5) { top: 10%; right: 0; animation-delay: 0s; }
+  .floating-card:nth-child(6) { bottom: 20%; left: -10%; animation-delay: 2s; }
+  .floating-card:nth-child(7) { top: 60%; right: -5%; animation-delay: 4s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .floating-card .icon { font-size: 16px; }
+
+  /* ── LOGOS ── */
+  #logos {
+    padding: 48px 6%;
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .logos-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 60px; flex-wrap: wrap;
+  }
+  .logos-label {
+    font-size: 12px; color: var(--text-muted);
+    font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .logo-item {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: var(--transition);
+  }
+  .logo-item:hover { opacity: 1; color: var(--text-secondary); }
+
+  /* ── SECTIONS ── */
+  section { padding: 120px 6%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 2px; background: var(--orange);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700; color: var(--text-primary);
+    line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
+  }
+  .section-sub {
+    font-size: 18px; font-weight: 300;
+    color: var(--text-secondary); max-width: 600px; line-height: 1.7;
+  }
+  .section-head { margin-bottom: 80px; }
+
+  /* ── SOLUTIONS ── */
+  #solutions { background: var(--bg); }
+
+  .solutions-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+
+  .sol-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .sol-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    opacity: 0; transition: var(--transition);
+  }
+  .sol-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    background: var(--bg-hover);
+  }
+  .sol-card:hover::before { opacity: 1; }
+
+  .sol-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px;
+    margin-bottom: 24px;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.15);
+  }
+
+  .sol-title {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 600; color: var(--text-primary);
+    line-height: 1.2; margin-bottom: 12px;
+  }
+
+  .sol-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+
+  .sol-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .sol-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--text-muted);
+  }
+  .sol-features li::before {
+    content: '→'; color: var(--orange); font-weight: 700; font-size: 12px;
+  }
+
+  .sol-link {
+    margin-top: 28px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--orange);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .sol-link:hover { gap: 12px; color: var(--orange-light); }
+
+  /* ── TRIRIGA ── */
+  #tririga { background: var(--bg-elevated); }
+  .tririga-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  }
+
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+  .feature-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+  .feature-item:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-hover);
+  }
+
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 20px;
+  }
+  .feat-body strong { display: block; font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .feat-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .tririga-visual {
+    position: relative;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .tri-stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex; align-items: center; gap: 24px;
+    transition: var(--transition);
+  }
+  .tri-stat-card:hover { border-color: var(--border-hover); }
+  .tri-stat-num {
+    font-family: var(--font-display);
+    font-size: 42px; font-weight: 700; color: var(--orange);
+    line-height: 1; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .tri-stat-label { font-size: 15px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── MAXIMO ── */
+  #maximo { background: var(--bg); }
+  .maximo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .maximo-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .mx-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .mx-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    opacity: 0; transition: var(--transition);
+  }
+  .mx-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .mx-card:hover::before { opacity: 1; }
+  .mx-card-icon { font-size: 28px; margin-bottom: 16px; }
+  .mx-card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+  .mx-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── AI ── */
+  #ai { background: var(--bg-elevated); }
+  #ai .section-sub { max-width: 700px; }
+
+  .ai-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .ai-accent-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-accent-block::before {
+    content: '';
+    position: absolute; top: -50%; right: -50%;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+  }
+
+  .ai-accent-title {
+    font-family: var(--font-display); font-size: 22px; font-weight: 600;
+    color: var(--text-primary); margin-bottom: 12px;
+  }
+  .ai-accent-p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; }
+
+  .ai-accent-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ai-stat {
+    background: var(--bg);
+    border-radius: 12px; padding: 24px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .ai-stat-num {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 700;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .ai-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+  .ai-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .ai-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .ai-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+  }
+  .ai-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .ai-icon { font-size: 32px; margin-bottom: 20px; }
+  .ai-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; }
+  .ai-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
+
+  .ai-use-cases {
+    margin-top: 60px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+    background: var(--bg-card);
+  }
+  .ai-use-cases-title {
+    padding: 28px 36px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary);
+    background: rgba(255,107,53,0.05);
+  }
+  .ai-use-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .ai-use-item {
+    padding: 28px 32px;
+    border-right: 1px solid var(--border);
+  }
+  .ai-use-item:last-child { border-right: none; }
+  .ai-use-item h5 { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--orange); margin-bottom: 10px; }
+  .ai-use-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .srv-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .srv-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    opacity: 0; transition: var(--transition);
+  }
+  .srv-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .srv-card:hover::before { opacity: 1; }
+  .srv-icon { font-size: 32px; margin-bottom: 20px; }
+  .srv-card h4 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; }
+  .srv-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── WHY ── */
+  #why { background: var(--bg-elevated); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .why-points { display: flex; flex-direction: column; gap: 36px; }
+  .why-point { display: flex; gap: 20px; }
+
+  .why-point-icon {
+    width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+    background: linear-gradient(135deg, var(--orange), #FF4D00);
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
+    box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+  }
+  .why-point h4 { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+  .why-point p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+
+  .why-visual {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .cert-badge {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 24px;
+    transition: var(--transition);
+  }
+  .cert-badge:hover { border-color: var(--border-hover); }
+  .cert-icon { font-size: 28px; }
+  .cert-text strong { display: block; font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .cert-text span { font-size: 13px; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-block { display: flex; gap: 18px; }
+
+  .contact-block-icon {
+    width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px;
+    background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.15);
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .contact-block strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .contact-block a, .contact-block span { font-size: 15px; color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+  .contact-block a:hover { color: var(--orange); }
+
+  .contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 48px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-size: 13px; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.3px; }
+  .field input, .field select, .field textarea {
+    font-family: var(--font-body); font-size: 15px; color: var(--text-primary);
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px; outline: none;
+    transition: var(--transition); width: 100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+  }
+  .field textarea { min-height: 120px; resize: vertical; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
+
+  .form-submit {
+    width: 100%; background: var(--orange); color: var(--bg);
+    font-family: var(--font-body); font-size: 16px; font-weight: 600;
+    padding: 16px; border: none; border-radius: 10px; cursor: pointer;
+    transition: var(--transition); letter-spacing: 0.3px;
+    margin-top: 8px;
+  }
+  .form-submit:hover {
+    background: var(--orange-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    padding: 80px 6% 40px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .footer-brand p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-top: 16px; max-width: 320px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .footer-logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--orange), #FF4D00);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .footer-logo-text { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); }
+  .footer-logo-text span { color: var(--orange); }
+
+  .footer-col h5 { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .footer-col a { font-size: 15px; color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+  .footer-col a:hover { color: var(--orange); }
+
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; font-size: 14px; color: var(--text-muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-inner, .tririga-inner, .maximo-grid, .why-grid, .contact-grid, .ai-intro { grid-template-columns: 1fr; gap: 60px; }
+    .solutions-grid, .ai-grid, .services-grid { grid-template-columns: 1fr 1fr; }
+    .ai-use-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .hero-visual { order: -1; }
+  }
+  @media (max-width: 768px) {
+    .solutions-grid, .ai-grid, .services-grid, .maximo-cards, .form-row { grid-template-columns: 1fr; }
+    .ai-use-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 6%; }
+    .hero-inner { gap: 40px; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SMOOTH SCROLL ── */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-wrap" href="#">
+    <img class="logo-img" src="clearpoint_logo.jpg" alt="ClearPoint Consulting" style="height:44px;width:auto;border-radius:8px;object-fit:contain;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#tririga">TRIRIGA</a></li>
+    <li><a href="#maximo">Maximo</a></li>
+    <li><a href="#ai">AI</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">IBM Business Partner</div>
+      <h1 class="hero-h1">
+        Smarter Workplaces.<br>
+        <span class="highlight">Intelligent</span><br>
+        Enterprise.
+      </h1>
+      <p class="hero-p">
+        IBM-certified specialists delivering TRIRIGA, Maximo, and AI-powered enterprise solutions that transform how organisations manage assets and workplaces.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a Project →</a>
+        <a href="#solutions" class="btn-ghost">Explore Solutions</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">200<span>+</span></div>
+          <div class="stat-label">Projects delivered</div>
+        </div>
+        <div>
+          <div class="stat-num">18<span>+</span></div>
+          <div class="stat-label">Years of expertise</div>
+        </div>
+        <div>
+          <div class="stat-num">40<span>+</span></div>
+          <div class="stat-label">Countries served</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-inner">
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="center-hub">⚡</div>
+        <div class="floating-card"><span class="icon">🏢</span> TRIRIGA IWMS</div>
+        <div class="floating-card"><span class="icon">⚙️</span> Maximo EAM</div>
+        <div class="floating-card"><span class="icon">🤖</span> AI Solutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div id="logos">
+  <div class="logos-inner">
+    <span class="logos-label">Trusted by teams using:</span>
+    <span class="logo-item">IBM</span>
+    <span class="logo-item">TRIRIGA</span>
+    <span class="logo-item">Maximo</span>
+    <span class="logo-item">MAS</span>
+    <span class="logo-item">Envizi</span>
+    <span class="logo-item">Cognos</span>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Enterprise Solutions<br>That Drive Results</h2>
+      <p class="section-sub">From assessment to deployment and beyond — we unlock the full value of IBM platforms for your organisation.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="sol-card reveal">
+        <div class="sol-icon">🏢</div>
+        <div class="sol-title">IBM TRIRIGA</div>
+        <p class="sol-desc">Integrated Workplace Management. Centralise real estate, space planning, and facility operations.</p>
+        <ul class="sol-features">
+          <li>Real estate & lease management</li>
+          <li>Space utilisation analytics</li>
+          <li>Capital project portfolio</li>
+          <li>Energy & environmental tracking</li>
+        </ul>
+        <a href="#tririga" class="sol-link">Explore TRIRIGA →</a>
+      </div>
+      <div class="sol-card reveal">
+        <div class="sol-icon">⚙️</div>
+        <div class="sol-title">IBM Maximo</div>
+        <p class="sol-desc">Enterprise Asset Management. Maximise asset performance and reduce operational costs at scale.</p>
+        <ul class="sol-features">
+          <li>Asset lifecycle management</li>
+          <li>Work order automation</li>
+          <li>Inventory optimisation</li>
+          <li>Predictive maintenance</li>
+        </ul>
+        <a href="#maximo" class="sol-link">Explore Maximo →</a>
+      </div>
+      <div class="sol-card reveal">
+        <div class="sol-icon">🤖</div>
+        <div class="sol-title">AI & Analytics</div>
+        <p class="sol-desc">Intelligent automation. Embed predictive analytics and conversational AI into your IBM platforms.</p>
+        <ul class="sol-features">
+          <li>Predictive & prescriptive analytics</li>
+          <li>AI-powered insights</li>
+          <li>Conversational interfaces</li>
+          <li>Custom AI model development</li>
+        </ul>
+        <a href="#ai" class="sol-link">Explore AI →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIRIGA -->
+<section id="tririga">
+  <div class="tririga-inner">
+    <div>
+      <div class="section-label">IBM TRIRIGA</div>
+      <h2 class="section-title">Smarter Buildings.<br>Optimised Real Estate.</h2>
+      <p class="section-sub">The world's leading IWMS — implemented and customised to match your exact portfolio requirements.</p>
+      <ul class="feature-list">
+        <li class="feature-item reveal">
+          <div class="feat-icon">🏢</div>
+          <div class="feat-body">
+            <strong>Integrated Workplace Management</strong>
+            <p>Unify real estate, space, and operations in a single system.</p>
+          </div>
+        </li>
+        <li class="feature-item reveal">
+          <div class="feat-icon">📊</div>
+          <div class="feat-body">
+            <strong>Capital Project Solutions</strong>
+            <p>Manage budgets, vendors, and timelines from planning to commissioning.</p>
+          </div>
+        </li>
+        <li class="feature-item reveal">
+          <div class="feat-icon">🔧</div>
+          <div class="feat-body">
+            <strong>Facility Management</strong>
+            <p>Automate maintenance scheduling and improve asset conditions.</p>
+          </div>
+        </li>
+        <li class="feature-item reveal">
+          <div class="feat-icon">🌱</div>
+          <div class="feat-body">
+            <strong>Energy & Sustainability</strong>
+            <p>Track consumption and drive sustainability targets with built-in analytics.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="tririga-visual">
+      <div class="tri-stat-card reveal">
+        <div class="tri-stat-num">30%</div>
+        <div class="tri-stat-label">Average reduction in facility operating costs after deployment</div>
+      </div>
+      <div class="tri-stat-card reveal">
+        <div class="tri-stat-num">25%</div>
+        <div class="tri-stat-label">Improvement in space utilisation enabling portfolio rationalisation</div>
+      </div>
+      <div class="tri-stat-card reveal">
+        <div class="tri-stat-num">100%</div>
+        <div class="tri-stat-label">Cloud-ready — deploy on IBM Cloud, on-prem, or hybrid SaaS</div>
+      </div>
+      <a href="#contact" class="btn-primary" style="align-self:flex-start;margin-top:12px;">Request a Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAXIMO -->
+<section id="maximo">
+  <div class="section-inner">
+    <div class="maximo-grid">
+      <div>
+        <div class="section-label">IBM Maximo</div>
+        <h2 class="section-title">Total Asset Intelligence<br>at Scale</h2>
+        <p class="section-sub">Maximo Application Suite gives operations teams an AI-enriched view of every asset — from facilities to critical infrastructure.</p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:16px;">
+          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;">Complete implementations, version upgrades, SaaS migrations, workflow configuration, and post-go-live support across energy, utilities, manufacturing, and healthcare.</p>
+          <a href="#contact" class="btn-primary" style="align-self:flex-start;">Talk to an Expert →</a>
+        </div>
+      </div>
+      <div class="maximo-cards">
+        <div class="mx-card reveal"><div class="mx-card-icon">📋</div><h4>Work Management</h4><p>Full lifecycle work orders, service requests, and labour tracking.</p></div>
+        <div class="mx-card reveal"><div class="mx-card-icon">📦</div><h4>Inventory Control</h4><p>Optimise storerooms and automate reordering.</p></div>
+        <div class="mx-card reveal"><div class="mx-card-icon">📱</div><h4>Mobile Workforce</h4><p>Offline-capable mobile apps for field teams.</p></div>
+        <div class="mx-card reveal"><div class="mx-card-icon">🔮</div><h4>Predictive Maintenance</h4><p>IoT sensors and AI models for failure prediction.</p></div>
+        <div class="mx-card reveal"><div class="mx-card-icon">☁️</div><h4>MAS Migration</h4><p>Seamless cloud migration to Maximo Application Suite.</p></div>
+        <div class="mx-card reveal"><div class="mx-card-icon">📊</div><h4>Reporting & KPIs</h4><p>Dashboards and custom KPI frameworks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <div class="section-inner">
+    <div class="ai-intro">
+      <div class="ai-intro-text">
+        <div class="section-label">AI & Automation</div>
+        <h2 class="section-title">Where AI Meets<br>Facilities & Assets</h2>
+        <p class="section-sub">Bridge the gap between IBM platforms and modern AI. Move from reactive operations to predictive, data-driven decision making.</p>
+        <a href="#contact" class="btn-primary" style="margin-top:12px;">Explore AI Solutions →</a>
+      </div>
+      <div class="ai-accent-block reveal">
+        <div style="position:relative;z-index:1;">
+          <div class="ai-accent-title">AI in the IBM Ecosystem</div>
+          <p class="ai-accent-p">TRIRIGA and Maximo natively integrate with IBM Watson. We help you harness these capabilities to automate workflows and surface insights.</p>
+        </div>
+        <div class="ai-accent-stats">
+          <div class="ai-stat"><div class="ai-stat-num">40%</div><div class="ai-stat-label">Less unplanned downtime</div></div>
+          <div class="ai-stat"><div class="ai-stat-num">60%</div><div class="ai-stat-label">Faster work resolution</div></div>
+          <div class="ai-stat"><div class="ai-stat-num">3×</div><div class="ai-stat-label">ROI on optimisation</div></div>
+          <div class="ai-stat"><div class="ai-stat-num">85%</div><div class="ai-stat-label">Anomaly detection accuracy</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-icon">🧠</div>
+        <h3>Predictive Analytics</h3>
+        <p>ML models that predict asset failure and energy demand before problems arise.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">💬</div>
+        <h3>Conversational AI</h3>
+        <p>Natural language interfaces for work orders, space booking, and asset queries.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">⚡</div>
+        <h3>Process Automation</h3>
+        <p>Automate lease renewals, maintenance scheduling, and purchase approvals.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">📡</div>
+        <h3>IoT Integration</h3>
+        <p>Connect sensors and meters for real-time operational intelligence.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">📈</div>
+        <h3>Advanced BI</h3>
+        <p>Custom dashboards and executive scorecards that drive decisions.</p>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon">🛡️</div>
+        <h3>AI Governance</h3>
+        <p>Responsible AI frameworks ensuring compliance and auditability.</p>
+      </div>
+    </div>
+
+    <div class="ai-use-cases reveal">
+      <div class="ai-use-cases-title">Real-World AI Use Cases</div>
+      <div class="ai-use-grid">
+        <div class="ai-use-item">
+          <h5>Smart Space Allocation</h5>
+          <p>AI analyses occupancy to recommend reallocation and reduce real estate costs.</p>
+        </div>
+        <div class="ai-use-item">
+          <h5>Predictive Equipment Failure</h5>
+          <p>ML models predict asset failure, enabling targeted preventive maintenance.</p>
+        </div>
+        <div class="ai-use-item">
+          <h5>Energy Optimisation</h5>
+          <p>AI adjusts building systems based on occupancy forecasts and tariff data.</p>
+        </div>
+        <div class="ai-use-item">
+          <h5>Intelligent Service Desk</h5>
+          <p>Natural language AI handles requests and auto-routes work orders 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">Our Services</div>
+      <h2 class="section-title">Full-Lifecycle Support<br>From Strategy to Scale</h2>
+      <p class="section-sub">Expertise at every stage — whether you're starting fresh, upgrading, or optimising.</p>
+    </div>
+    <div class="services-grid">
+      <div class="srv-card reveal"><div class="srv-icon">🔍</div><h4>Assessment</h4><p>Health checks, gap analysis, and roadmap development.</p></div>
+      <div class="srv-card reveal"><div class="srv-icon">🚀</div><h4>Implementation</h4><p>End-to-end deployment on time and on budget.</p></div>
+      <div class="srv-card reveal"><div class="srv-icon">🔄</div><h4>Upgrades</h4><p>Seamless version upgrades and cloud migration.</p></div>
+      <div class="srv-card reveal"><div class="srv-icon">🔗</div><h4>Integration</h4><p>Connect to ERP, HR, GIS, BIM, and third-party systems.</p></div>
+      <div class="srv-card reveal"><div class="srv-icon">📚</div><h4>Training</h4><p>Role-based programmes for admins, users, and developers.</p></div>
+      <div class="srv-card reveal"><div class="srv-icon">🛟</div><h4>Support</h4><p>SLA-backed contracts with dedicated IBM-certified consultants.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Clearpoint</div>
+        <h2 class="section-title">IBM Expertise<br>You Can Rely On</h2>
+        <p class="section-sub" style="margin-bottom:48px;">We deliver outcomes, not just software. Our IBM-certified specialists bring deep expertise to every engagement.</p>
+        <div class="why-points">
+          <div class="why-point reveal">
+            <div class="why-point-icon">🎓</div>
+            <div><h4>IBM-Certified Consultants</h4><p>Every consultant holds current IBM certifications in TRIRIGA, Maximo, and related technologies.</p></div>
+          </div>
+          <div class="why-point reveal">
+            <div class="why-point-icon">🌍</div>
+            <div><h4>Global Reach, Local Presence</h4><p>Serving clients across Africa, the Middle East, Europe, and beyond with regional expertise.</p></div>
+          </div>
+          <div class="why-point reveal">
+            <div class="why-point-icon">🏭</div>
+            <div><h4>Deep Industry Experience</h4><p>Sector-specific accelerators for healthcare, government, manufacturing, utilities, and real estate.</p></div>
+          </div>
+          <div class="why-point reveal">
+            <div class="why-point-icon">🤝</div>
+            <div><h4>Long-Term Partnership</h4><p>Clients average 7+ years with us. We measure success by your outcomes, not project close dates.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <div style="color:var(--text-muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:12px;">Certifications</div>
+        <div class="cert-badge"><div class="cert-icon">🏆</div><div class="cert-text"><strong>IBM Business Partner</strong><span>Certified implementation partner</span></div></div>
+        <div class="cert-badge"><div class="cert-icon">✅</div><div class="cert-text"><strong>IBM TRIRIGA Certified</strong><span>Implementation & Technical Consulting</span></div></div>
+        <div class="cert-badge"><div class="cert-icon">✅</div><div class="cert-text"><strong>IBM Maximo Certified</strong><span>EAM & MAS Deployment Specialists</span></div></div>
+        <div class="cert-badge"><div class="cert-icon">🔐</div><div class="cert-text"><strong>ISO 27001 Compliant</strong><span>Enterprise-grade information security</span></div></div>
+        <div class="cert-badge"><div class="cert-icon">⭐</div><div class="cert-text"><strong>18+ Years Experience</strong><span>Trusted by 200+ organisations globally</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let's Start a<br>Conversation</h2>
+        <p class="section-sub" style="margin-bottom:48px;">Tell us about your challenge. Initial consultations are complimentary.</p>
+        <div class="contact-info">
+          <div class="contact-block">
+            <div class="contact-block-icon">📧</div>
+            <div><strong>Email</strong><a href="mailto:info@clearpointconsulting.com">info@clearpointconsulting.com</a></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon">📞</div>
+            <div><strong>Phone</strong><span>+254 700 000 000</span></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon">📍</div>
+            <div><strong>Headquarters</strong><span>Westlands Business Park, Nairobi, Kenya</span></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon">🕐</div>
+            <div><strong>Office Hours</strong><span>Mon – Fri, 8:00 AM – 5:30 PM EAT</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Send a Message</div>
+        <div style="font-size:15px;color:var(--text-muted);margin-bottom:8px;">We typically respond within 1 business day.</div>
+        <div class="form-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+        </div>
+        <div class="field"><label>Work Email</label><input type="email" placeholder="jane@company.com"></div>
+        <div class="field"><label>Organisation</label><input type="text" placeholder="Company name"></div>
+        <div class="field">
+          <label>I'm interested in</label>
+          <select>
+            <option>IBM TRIRIGA Implementation</option>
+            <option>IBM Maximo / MAS</option>
+            <option>AI & Analytics Solutions</option>
+            <option>System Upgrade or Migration</option>
+            <option>Support & Managed Services</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="field"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
+        <button class="form-submit" onclick="this.textContent='Sent ✓'; this.style.background='#22c55e';">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img class="footer-logo-img" src="clearpoint_logo.jpg" alt="ClearPoint Consulting" style="height:36px;width:auto;border-radius:6px;object-fit:contain;">
+        <div class="footer-logo-text">Clear<span>Point</span></div>
+      </div>
+      <p>IBM-certified enterprise solutions specialists delivering TRIRIGA, Maximo, and AI-powered workplace management systems worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Solutions</h5>
+      <ul>
+        <li><a href="#tririga">IBM TRIRIGA</a></li>
+        <li><a href="#maximo">IBM Maximo</a></li>
+        <li><a href="#">Maximo App Suite</a></li>
+        <li><a href="#ai">AI Solutions</a></li>
+        <li><a href="#">IBM Cognos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Implementation</a></li>
+        <li><a href="#services">Consulting</a></li>
+        <li><a href="#services">Upgrades</a></li>
+        <li><a href="#services">Integration</a></li>
+        <li><a href="#services">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Clearpoint Consulting. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Use</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60 ? 'rgba(10,10,15,0.95)' : 'rgba(10,10,15,0.8)';
+  });
+
+  // Scroll reveal animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('active');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
