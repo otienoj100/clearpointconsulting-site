@@ -1184,18 +1184,18 @@
           </div>
         </div>
       </div>
-      <div class="contact-form reveal">
+      <form class="contact-form reveal" action="https://formspree.io/f/xkoyaeoo" method="POST">
         <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Send a Message</div>
         <div style="font-size:15px;color:var(--text-muted);margin-bottom:8px;">We typically respond within 1 business day.</div>
         <div class="form-row">
-          <div class="field"><label>First Name</label><input type="text" placeholder="Jane"></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+          <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Jane" required></div>
+          <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Doe" required></div>
         </div>
-        <div class="field"><label>Work Email</label><input type="email" placeholder="jane@company.com"></div>
-        <div class="field"><label>Organisation</label><input type="text" placeholder="Company name"></div>
+        <div class="field"><label>Work Email</label><input type="email" name="email" placeholder="jane@company.com" required></div>
+        <div class="field"><label>Organisation</label><input type="text" name="organisation" placeholder="Company name"></div>
         <div class="field">
           <label>I'm interested in</label>
-          <select>
+          <select name="interest">
             <option>IBM TRIRIGA Implementation</option>
             <option>IBM Maximo / MAS</option>
             <option>AI & Analytics Solutions</option>
@@ -1204,9 +1204,10 @@
             <option>General Enquiry</option>
           </select>
         </div>
-        <div class="field"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
-        <button class="form-submit" onclick="this.textContent='Sent ✓'; this.style.background='#22c55e';">Send Message</button>
-      </div>
+        <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us about your project..." required></textarea></div>
+        <input type="hidden" name="_subject" value="New Clearpoint Consulting Inquiry">
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
