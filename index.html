@@ -47,16 +47,22 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 4rem; height: 72px;
+    padding: 0 4rem; height: 90px;
     background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 20px;
     text-decoration: none;
   }
-  .nav-logo img { height: 42px; width: auto; }
+  .nav-logo img { height: 80px; width: auto; }
+  .nav-logo-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--light);
+    letter-spacing: -0.02em;
+  }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a {
     font-size: 0.9rem; font-weight: 400; 
@@ -219,51 +225,56 @@
   }
   .stack-card {
     position: absolute;
-    background: var(--dark-card);
-    border: 1px solid var(--border);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border);
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     transition: transform 0.5s ease;
+    overflow: hidden;
+  }
+  .stack-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(255, 107, 53, 0.3) 100%);
   }
   .stack-card:hover { transform: translateY(-8px) scale(1.02); }
   
   .card-1 {
     top: 5%; left: 0; width: 70%; height: 45%;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80');
   }
   .card-2 {
     bottom: 5%; right: 0; width: 70%; height: 45%;
-    background: linear-gradient(135deg, #1f1f1f 0%, #141414 100%);
-    border: 1px solid rgba(255, 107, 53, 0.15);
+    background-image: url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80');
   }
   .card-3 {
     top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 55%; height: 35%;
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--deep-orange) 100%);
-    display: flex; align-items: center; justify-content: center;
+    background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80');
     z-index: 2;
+  }
+  .card-3::before {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.7) 0%, rgba(229, 83, 45, 0.7) 100%);
   }
   
   .card-icon {
     font-size: 3rem;
-    color: rgba(255, 107, 53, 0.3);
-  }
-  .card-3 .card-icon {
-    font-size: 4rem;
     color: white;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
   }
   .card-label {
     position: absolute;
     bottom: 1rem; left: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--steel);
-    font-weight: 500;
-  }
-  .card-3 .card-label {
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    color: white;
     font-weight: 600;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   }
 
   /* ── SECTIONS ── */
@@ -328,7 +339,8 @@
   .sol-image {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -339,20 +351,14 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 107, 53, 0.03) 2px,
-        rgba(255, 107, 53, 0.03) 4px
-      );
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(255, 107, 53, 0.3) 100%);
   }
   .sol-icon {
     font-size: 4rem;
-    color: var(--primary-orange);
+    color: white;
     position: relative;
     z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
   }
   .sol-content {
     padding: 2rem;
@@ -414,7 +420,8 @@
   .featured-image {
     width: 100%;
     height: 500px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    background-size: cover;
+    background-position: center;
     border-radius: 20px;
     border: 1px solid var(--border);
     display: flex;
@@ -427,15 +434,15 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: 
-      radial-gradient(circle at 30% 40%, var(--glow-orange) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(255, 107, 53, 0.4) 100%);
   }
   .featured-icon {
     font-size: 8rem;
-    color: var(--primary-orange);
+    color: white;
     position: relative;
     z-index: 1;
-    opacity: 0.5;
+    opacity: 0.9;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6));
   }
   .featured-content h2 {
     text-align: left;
@@ -814,8 +821,16 @@
     flex-wrap: wrap;
     gap: 2rem;
   }
-  .footer-logo img {
-    height: 48px;
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-logo img { height: 80px; }
+  .footer-logo-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--light);
   }
   .footer-text {
     font-size: 0.875rem;
@@ -875,6 +890,7 @@
 <nav>
   <a href="#" class="nav-logo">
     <img src="clearpoint_logo.jpg" alt="Clearpoint Consulting">
+    <span class="nav-logo-text">Clearpoint Consulting</span>
   </a>
   <ul class="nav-links">
     <li><a href="#solutions">Solutions</a></li>
@@ -956,7 +972,7 @@
 
   <div class="solutions-grid">
     <div class="sol-card">
-      <div class="sol-image">
+      <div class="sol-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80');">
         <ph-icon name="buildings" weight="duotone" class="sol-icon"></ph-icon>
       </div>
       <div class="sol-content">
@@ -988,7 +1004,7 @@
     </div>
 
     <div class="sol-card">
-      <div class="sol-image">
+      <div class="sol-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80');">
         <ph-icon name="gear-six" weight="duotone" class="sol-icon"></ph-icon>
       </div>
       <div class="sol-content">
@@ -1020,7 +1036,7 @@
     </div>
 
     <div class="sol-card">
-      <div class="sol-image">
+      <div class="sol-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80');">
         <ph-icon name="brain" weight="duotone" class="sol-icon"></ph-icon>
       </div>
       <div class="sol-content">
@@ -1056,7 +1072,7 @@
 <!-- TRIRIGA FEATURED -->
 <section class="featured-section" id="tririga">
   <div class="featured-grid">
-    <div class="featured-image">
+    <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80');">
       <ph-icon name="buildings" weight="duotone" class="featured-icon"></ph-icon>
     </div>
     <div class="featured-content">
@@ -1175,7 +1191,7 @@
         </div>
       </div>
     </div>
-    <div class="featured-image">
+    <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=1200&q=80');">
       <ph-icon name="gear-six" weight="duotone" class="featured-icon"></ph-icon>
     </div>
   </div>
@@ -1453,6 +1469,7 @@
   <div class="footer-content">
     <div class="footer-logo">
       <img src="clearpoint_logo.jpg" alt="Clearpoint Consulting">
+      <span class="footer-logo-text">Clearpoint Consulting</span>
     </div>
     <div class="footer-text">
       © 2025 Clearpoint Consulting. All rights reserved.
